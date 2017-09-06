@@ -11,11 +11,23 @@ export const getFriends = () => {
   }
 };
 
+// export const addFriends = () => {
+//   const promise = axios.put('http://localhost:5000/new-friend');
+//   return {
+//     type: ADD_FRIENDS,
+//     payload: promise 
+//   }
+// };
+
 export const addFriends = () => {
-  const newPromise = axios.post('http://localhost:5000/friends');
-  return {
-    type: ADD_FRIENDS,
-    payload: newPromise
-  }
+  axios({
+    method: 'put',
+    url: 'http://localhost:5000/new-friend',
+    data: {
+      name: 'Matt',
+      age: 21,
+      email: 'email@email.com'
+    }
+  });
 };
 

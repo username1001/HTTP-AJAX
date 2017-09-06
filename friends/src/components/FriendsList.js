@@ -1,15 +1,18 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getFriends } from '../actions';
+import { getFriends, addFriends } from '../actions';
 
 class FriendsList extends Component {
     componentDidMount() {
         this.props.getFriends();
     }
-
     render() {
         return (
             <div>
+              <input type="text" placeholder="name" className="input" />
+              <input type="text" placeholder="age" className="input" />
+              <input type="text" placeholder="email" className="input" />
+              <button className="button" onClick={() => {addFriends()}}>Add Friend</button>
                 <ul>
                     {this.props.friends.map((friend, i) => {
                         return (
@@ -26,7 +29,6 @@ class FriendsList extends Component {
         );
     }
 }
-
 const mapStateToProps = (state) => {
     return {
         friends: state.friends
